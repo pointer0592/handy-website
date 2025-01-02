@@ -30,7 +30,8 @@ const { app, header } = useAppConfig()
         to="/signup"
         class="hidden lg:flex"
       />
-      <AppThemeToggle />
+      <UColorModeButton />
+
       <UContentSearchButton
         v-if="header?.search"
         :label="null"
