@@ -2,20 +2,28 @@ export default defineAppConfig({
   ui: {
     primary: 'fuchsia',
     gray: 'slate',
+
     button: {
       rounded: 'rounded-full',
       default: {
         size: 'md'
       }
     },
+
     input: {
       default: {
         size: 'md'
       }
     },
+
     card: {
       rounded: 'rounded-xl'
     },
+
+    icons: {
+      dark: 'i-carbon-moon',
+      light: 'i-carbon-sun'
+    }
   },
   app: {
     name: 'Nuxt UI Pro',
