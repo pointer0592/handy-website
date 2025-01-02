@@ -66,7 +66,7 @@ function onSubmit(data: any) {
 
       <template #password-hint>
         <NuxtLink
-          to="/"
+          to="/auth/forgot-password"
           class="text-primary hover:text-primary-600 font-medium text-xs "
         >Forgot password?
         </NuxtLink>
@@ -76,7 +76,7 @@ function onSubmit(data: any) {
         <div class="text-sm">
           <span>Don't have an account?&nbsp;&nbsp;</span>
         <ULink
-          to="/signup"
+          to="/auth/signup"
           inactive-class="text-primary hover:text-primary-600 font-medium"
         >Sign up
         </ULink>

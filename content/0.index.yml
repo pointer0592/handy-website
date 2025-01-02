@@ -1,4 +1,4 @@
-title: Nuxt UI Pro - SaaS template
+title: HHS - Hudson Household Services
 description: Nuxt UI Pro is a collection of premium Vue components built on top of Nuxt UI to create beautiful & responsive Nuxt applications in minutes.
 navigation: false
 hero:
@@ -9,17 +9,17 @@ hero:
     to: https://ui.nuxt.com/pro
     icon: i-heroicons-arrow-top-right-on-square-20-solid
   links:
-    - label: Get started
-      to: '/signup'
+    - label: Our services
+      to: '/services'
       size: xl
       color: black
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-    - label: Use this template
+    - label: Work gallery
       icon: i-simple-icons-github
       size: xl
       color: gray
-      to: https://github.com/nuxt-ui-pro/saas
+      to: '/work'
       target: _blank
 sections:
   - title: The power of our service
@@ -37,8 +37,8 @@ sections:
         description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing.
         icon: i-heroicons-lock-closed
     links:
-      - label: Explore components
-        to: /pro/components
+      - label: Explore services
+        to: /services
         color: gray
         icon: i-heroicons-arrow-right-20-solid
         trailing: true

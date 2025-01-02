@@ -9,18 +9,22 @@ useSeoMeta({
 
 const fields = [{
   name: 'name',
+  label: '',
   type: 'text',
   placeholder: 'Enter your name'
 }, {
   name: 'email',
+  label: '',
   type: 'email',
   placeholder: 'Enter your email'
 }, {
   name: 'password',
+  label: '',
   type: 'password',
   placeholder: 'Enter your password'
 },{
   name: 'confirm_password',
+  label: '',
   type: 'password',
   placeholder: 'Confirm your password'
 }]

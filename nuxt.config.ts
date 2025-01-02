@@ -6,13 +6,26 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
+    '@nuxt/icon',
     '@nuxt/image-edge',
     '@nuxt/ui',
     '@nuxthq/studio',
     '@vueuse/nuxt',
     'nuxt-og-image',
-    'nuxt-vue3-google-signin'
+    'nuxt-vue3-google-signin',
+    'nuxt-svgo'
   ],
+  svgo: {
+    autoImportPath: './assets/icons/custom/',
+  },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'H',
+        dir: './assets/my-icons'
+      },
+    ],
+  },
   googleSignIn: {
     clientId: process.env.GOOGLE_CLIENT_ID,
   },

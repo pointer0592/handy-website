@@ -1,10 +1,11 @@
 export default defineAppConfig({
   ui: {
-    primary: 'fuchsia',
+    primary: 'amber',
     gray: 'slate',
+    secondary: 'lime',
 
     button: {
-      rounded: 'rounded-full',
+      rounded: 'rounded-lg',
       default: {
         size: 'md'
       }
@@ -17,7 +18,7 @@ export default defineAppConfig({
     },
 
     card: {
-      rounded: 'rounded-xl'
+      rounded: 'rounded-lg'
     },
 
     icons: {
@@ -26,34 +27,37 @@ export default defineAppConfig({
     }
   },
   app: {
-    name: 'Nuxt UI Pro',
-    description: 'Docs template',
-    url: 'https://nuxt-ui-pro-docs.vercel.app',
+    name: 'Hudson Home Services',
+    description: 'Serving the Hudson Valley with handyman and other bespoke services.',
+    url: 'http://localhost:5000',
     image: '/images/og-image.png',
     configs: {
       colorMode: true
     },
     links: [
       {
-        label: 'Docs',
-        to: '/docs'
+        label: 'About',
+        to: '/about'
       }, {
-        label: 'Pricing',
-        to: '/pricing',
+        label: 'Services',
+        to: '/services',
         children: [{
-          label: 'Pricing',
-          to: '/pro/pricing',
-          icon: 'i-heroicons-ticket',
-          description: 'A simple pricing, for solo developers or teams.'
-        }, {
-          label: 'Templates',
-          to: '/pro/templates',
+          label: 'Approach',
+          to: '/services/approach',
           icon: 'i-heroicons-computer-desktop',
           description: 'Get started with one of our official templates.'
+        },{
+          label: 'Pricing',
+          to: '/services/pricing',
+          icon: 'i-heroicons-ticket',
+          description: 'A simple pricing, for solo developers or teams.'
         }]
       }, {
-        label: 'Blog',
-        to: '/blog'
+        label: 'Work',
+        to: '/work'
+      }, {
+        label: 'My Account',
+        to: '/account'
       }
     ],
   },

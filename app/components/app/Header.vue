@@ -9,25 +9,17 @@ const { app, header } = useAppConfig()
 <template>
   <UHeader :links="app.links">
     <template #logo>
-      Nuxt UI Pro <UBadge
-        label="SaaS"
-        variant="subtle"
-        class="mb-0.5"
-      />
+      <SvgoHandy class="text-4xl" />
     </template>
 
     <template #right>
       <UButton
         label="Sign in"
-        color="gray"
-        to="/login"
-      />
-      <UButton
-        label="Sign up"
         icon="i-heroicons-arrow-right-20-solid"
         trailing
-        color="black"
-        to="/signup"
+        variant="soft"
+        color="primary"
+        to="/auth/login"
         class="hidden lg:flex"
       />
       <UColorModeButton />
