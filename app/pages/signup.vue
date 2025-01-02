@@ -10,35 +10,48 @@ useSeoMeta({
 const fields = [{
   name: 'name',
   type: 'text',
-  label: 'Name',
   placeholder: 'Enter your name'
 }, {
   name: 'email',
   type: 'email',
-  label: 'Email',
   placeholder: 'Enter your email'
 }, {
   name: 'password',
-  label: 'Password',
   type: 'password',
   placeholder: 'Enter your password'
+},{
+  name: 'confirm_password',
+  type: 'password',
+  placeholder: 'Confirm your password'
 }]
 
 const validate = (state: any) => {
   const errors = []
   if (!state.email) errors.push({ path: 'email', message: 'Email is required' })
+
   if (!state.password) errors.push({ path: 'password', message: 'Password is required' })
+
+  if (!state.password) {
+    errors.push({ path: 'password', message: 'Password is required' })
+  } else {
+    // Check if the password meets the criteria
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/
+    if (!passwordRegex.test(state.password)) {
+      errors.push({
+        path: 'password',
+        message: 'Password minimum: 8 characters, including one number and one symbol'
+      })
+    }
+  }
+
+  if (!state.confirm_password) {
+    errors.push({ path: 'confirm_password', message: 'Confirm Password is required' })
+  } else if (state.password !== state.confirm_password) {
+    errors.push({ path: 'confirm_password', message: 'Passwords do not match' })
+  }
+
   return errors
 }
-
-const providers = [{
-  label: 'Continue with GitHub',
-  icon: 'i-simple-icons-github',
-  color: 'gray' as const,
-  click: () => {
-    console.log('Redirect to GitHub')
-  }
-}]
 
 function onSubmit(data: any) {
   console.log('Submitted', data)
@@ -52,7 +65,6 @@ function onSubmit(data: any) {
     <UAuthForm
       :fields="fields"
       :validate="validate"
-      :providers="providers"
       align="top"
       title="Create an account"
       :ui="{ base: 'text-center', footer: 'text-center' }"
@@ -64,6 +76,20 @@ function onSubmit(data: any) {
           to="/login"
           class="text-primary font-medium"
         >Login</NuxtLink>.
+
+        <div class="pt-6">
+          <div class="inline-flex p-0 m-0 rounded-sm hover:ring-1 hover:ring-primary base-transition">
+            <AuthGoogleSignIn
+              :oneTap="false"
+              size="large"
+              theme="outline"
+              text="Register with Google"
+            />
+          </div>
+        </div>
+
+        <UDivider label="OR" class="pt-6" />
+        <div class="pt-6 text-left">Provide information below:</div>
       </template>
 
       <template #footer>

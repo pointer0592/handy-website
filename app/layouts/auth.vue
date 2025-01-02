@@ -4,21 +4,25 @@ useHead({
     class: 'dark:bg-gray-950'
   }
 })
+
 </script>
 
 <template>
   <div class="h-screen flex items-center justify-center overlay">
-    <div class="gradient" />
+    <div class="gradient"/>
+    <div class="inline-flex gap-6 items-center justify-center absolute top-4 rounded-full px-4 py2 bg-black dark:bg-white">
+      <UButton
+        icon="i-heroicons-home"
+        label="Home"
+        to="/"
+        color="black"
+        class=""
+      />
 
-    <UButton
-      icon="i-heroicons-home"
-      label="Home"
-      to="/"
-      color="black"
-      class="absolute top-4"
-    />
+      <UColorModeButton/>
+    </div>
 
-    <slot />
+    <slot/>
   </div>
 </template>
 
@@ -38,15 +42,14 @@ useHead({
 
 .overlay {
   background-size: 100px 100px;
-  background-image:
-    linear-gradient(to right, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px);
+  background-image: linear-gradient(to right, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px),
+  linear-gradient(to bottom, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px);
 }
+
 .dark {
   .overlay {
-    background-image:
-      linear-gradient(to right, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px),
-      linear-gradient(to bottom, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px);
+    background-image: linear-gradient(to right, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px);
   }
 }
 </style>

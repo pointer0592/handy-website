@@ -10,8 +10,12 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxthq/studio',
     '@vueuse/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    'nuxt-vue3-google-signin'
   ],
+  googleSignIn: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+  },
 
   devtools: {
     enabled: true
@@ -21,6 +25,15 @@ export default defineNuxtConfig({
     disableTransition: true
   },
 
+  imports: {
+    // Add tv and VariantProps to the set of auto imported modules
+    presets: [
+      {
+        from: 'consola',
+        imports: ['consola'],
+      },
+    ],
+  },
   routeRules: {
     '/api/search.json': { prerender: true },
     '/docs': { redirect: '/docs/getting-started', prerender: false }

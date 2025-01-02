@@ -21,23 +21,17 @@ const fields = [{
 
 const validate = (state: any) => {
   const errors = []
-  if (!state.email) errors.push({ path: 'email', message: 'Email is required' })
-  if (!state.password) errors.push({ path: 'password', message: 'Password is required' })
+  if (!state.email) errors.push({path: 'email', message: 'Email is required'})
+  if (!state.password) errors.push({path: 'password', message: 'Password is required'})
   return errors
 }
 
-const providers = [{
-  label: 'Continue with GitHub',
-  icon: 'i-simple-icons-github',
-  color: 'white' as const,
-  click: () => {
-    console.log('Redirect to GitHub')
-  }
-}]
 
 function onSubmit(data: any) {
   console.log('Submitted', data)
 }
+
+
 </script>
 
 <!-- eslint-disable vue/multiline-html-element-content-newline -->
@@ -47,7 +41,6 @@ function onSubmit(data: any) {
     <UAuthForm
       :fields="fields"
       :validate="validate"
-      :providers="providers"
       title="Welcome back"
       align="top"
       icon="i-heroicons-lock-closed"
@@ -56,24 +49,49 @@ function onSubmit(data: any) {
       @submit="onSubmit"
     >
       <template #description>
-        Don't have an account? <NuxtLink
-          to="/signup"
-          class="text-primary font-medium"
-        >Sign up</NuxtLink>.
+          <p>Sign in with Google or use your registered email/password:</p>
+
+          <div class="pt-6">
+            <div class="inline-flex p-0 m-0 rounded-sm hover:ring-1 hover:ring-primary base-transition">
+            <AuthGoogleSignIn
+              :oneTap="false"
+              size="large"
+              theme="outline"
+            />
+            </div>
+          </div>
+
+        <UDivider label="OR" class="pt-6" />
       </template>
 
       <template #password-hint>
         <NuxtLink
           to="/"
-          class="text-primary font-medium"
-        >Forgot password?</NuxtLink>
+          class="text-primary hover:text-primary-600 font-medium text-xs "
+        >Forgot password?
+        </NuxtLink>
       </template>
 
       <template #footer>
-        By signing in, you agree to our <NuxtLink
+        <div class="text-sm">
+          <span>Don't have an account?&nbsp;&nbsp;</span>
+        <ULink
+          to="/signup"
+          inactive-class="text-primary hover:text-primary-600 font-medium"
+        >Sign up
+        </ULink>
+          <span>.</span>
+
+        </div>
+        <div class="text-sm">
+          <span> By signing in, you agree to our&nbsp;</span>
+        <ULink
           to="/"
-          class="text-primary font-medium"
-        >Terms of Service</NuxtLink>.
+          inactive-class="text-primary hover:text-primary-600 font-medium"
+        >Terms of Service
+        </ULink>
+          <span>.</span>
+        </div>
       </template>
     </UAuthForm>
   </UCard>

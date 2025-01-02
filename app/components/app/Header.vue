@@ -3,20 +3,11 @@ import type { NavItem } from '@nuxt/content'
 
 const navigation = inject<Ref<NavItem[]>>('navigation', ref([]))
 
-const links = [{
-  label: 'Docs',
-  to: '/docs'
-}, {
-  label: 'Pricing',
-  to: '/pricing'
-}, {
-  label: 'Blog',
-  to: '/blog'
-}]
+const { app, header } = useAppConfig()
 </script>
 
 <template>
-  <UHeader :links="links">
+  <UHeader :links="app.links">
     <template #logo>
       Nuxt UI Pro <UBadge
         label="SaaS"
@@ -38,6 +29,12 @@ const links = [{
         color="black"
         to="/signup"
         class="hidden lg:flex"
+      />
+      <AppThemeToggle />
+      <UContentSearchButton
+        v-if="header?.search"
+        :label="null"
+        class=""
       />
     </template>
 
