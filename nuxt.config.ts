@@ -13,23 +13,29 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-og-image',
     'nuxt-vue3-google-signin',
-    'nuxt-svgo'
+    'nuxt-svgo',
+    '@nuxtjs/cloudinary'
   ],
-  svgo: {
-    autoImportPath: './assets/icons/custom/',
+  runtimeConfig: {
+    public: {
+      cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    },
+    cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
   },
-  icon: {
-    customCollections: [
-      {
-        prefix: 'H',
-        dir: './assets/my-icons'
-      },
-    ],
+  svgo: {
+    autoImportPath: './assets/icons/custom/'
   },
   googleSignIn: {
     clientId: process.env.GOOGLE_CLIENT_ID,
   },
-
+  image: {
+    cloudinary: {
+      baseURL: `${process.env.CLOUDINARY_CLOUD_NAME}handy/`
+    },
+    format: ['webp'],
+    quality: 80
+  },
   devtools: {
     enabled: true
   },
@@ -39,11 +45,10 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    // Add tv and VariantProps to the set of auto imported modules
     presets: [
       {
         from: 'consola',
-        imports: ['consola'],
+        imports: ['consola']
       },
     ],
   },
